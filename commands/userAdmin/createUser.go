@@ -9,7 +9,8 @@ import (
 	"github.com/twistingmercury/godog/commands/roleAdmin"
 )
 
-func NewUser(email, name, role string) (user datadog.User, err error) {
+// CreateUser invokes the DD api to create a new user account.
+func CreateUser(email, name, role string) (user DatadogUser, err error) {
 	defer func() {
 		if rcr := recover(); rcr != nil {
 			log.Fatalln(rcr)
@@ -48,6 +49,6 @@ func NewUser(email, name, role string) (user datadog.User, err error) {
 		return
 	}
 
-	user = *r.Data
+	user = NewUser(*r.Data)
 	return
 }

@@ -2,6 +2,7 @@ package commands
 
 import "fmt"
 
+// Logo displays Godog's very cool logo.
 func Logo() {
 
 	logo := " _____           _               _\n" +

@@ -6,6 +6,7 @@ import (
 	"github.com/DataDog/datadog-api-client-go/api/v2/datadog"
 )
 
+// ListAllUsers invokes the DD api to list out all active and pending users.
 func ListAllUsers() (user []datadog.User, err error) {
 	ctx := datadog.NewDefaultContext(context.Background())
 	status := "Active,Pending"

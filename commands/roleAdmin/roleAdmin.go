@@ -13,6 +13,20 @@ const (
 	adminRoleId    = "60cf6c52-e140-11e8-bd15-f7250a8586e6"
 )
 
+func RolebyID(id string) (r UserRole, err error) {
+	switch id {
+	case standardRoleId:
+		r = *standardRole
+	case readOnlyRoleId:
+		r = *readOnlyRole
+	case adminRoleId:
+		r = *adminRole
+	default:
+		err = fmt.Errorf("%v is not a valid user role id", id)
+	}
+	return
+}
+
 type UserRole struct {
 	flagValue string
 	id        string
@@ -34,7 +48,7 @@ func (u *UserRole) Name() string {
 var (
 	standardRole = &UserRole{id: standardRoleId, name: "Datadog Standard Role", flagValue: "s"}
 	readOnlyRole = &UserRole{id: readOnlyRoleId, name: "Datadog Read Only Role", flagValue: "r"}
-	adimRole     = &UserRole{id: adminRoleId, name: "Datadog Admin Role", flagValue: "a"}
+	adminRole    = &UserRole{id: adminRoleId, name: "Datadog Admin Role", flagValue: "a"}
 )
 
 func GetRole(fv string) (r *UserRole, err error) {
@@ -44,7 +58,7 @@ func GetRole(fv string) (r *UserRole, err error) {
 	case "r":
 		r = readOnlyRole
 	case "a":
-		r = adimRole
+		r = adminRole
 	default:
 		err = fmt.Errorf("%v is not a valid user role", fv)
 	}
