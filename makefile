@@ -3,7 +3,7 @@ BIN_DIR=_bin
 BUILD_DATE=$(shell date +%Y.%m.%d)
 BUILD_VER=0.0.1
 GIT_COMMIT=$(shell git rev-parse --short HEAD)
-BUILD_CFG=Debug
+BUILD_CFG=debug
 
 build:
 	rm -rf $(BIN_DIR)/

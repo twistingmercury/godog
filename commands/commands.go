@@ -14,69 +14,70 @@ import (
 
 const email = "--email"
 const name = "--name"
+const role = "--role"
 
+// the reason for not using flag or spf13/pflag is that the commands themselves require different
+// arguments themselves.  This seemed like the easiest way to do that at the time.
 var (
-	cmdAdd       = command{"--add-user", []string{"-a"}, "Add a new user to Datadog.", []string{email, name}}
-	cmdDel       = command{"--del-user", []string{"-d"}, "Disable an existing user in Datadog.", []string{email}}
-	cmdListUsers = command{"--list-users", []string{"-l"}, "List all of the currently active and pending Datadog users.", nil}
-	cmdFindUsers = command{"--find-user", []string{"-f"}, "Find a specific user by email or name.", nil}
-	cmdListRoles = command{"--list-roles", []string{"-r"}, "Lists all of the available roles supported by Datadog.", nil}
-	cmdHelp      = command{"--help", []string{"?", "-h"}, "Shows command line help.", nil}
+	cmdAdd       = Command{"--add-user", "Add a new user to Datadog.", []string{email, name, role}}
+	cmdDel       = Command{"--del-user", "Disable an existing user in Datadog.", []string{email}}
+	cmdListUsers = Command{"--list-users", "List all of the currently active and pending Datadog users.", nil}
+	cmdFindUsers = Command{"--find-user", "Find a specific user by email or name.", nil}
+	cmdListRoles = Command{"--list-roles", "Lists all of the available roles supported by Datadog.", nil}
+	cmdHelp      = Command{"--help", "Shows command line help.", nil}
+)
 
-	cmds = []command{
+func Help() {
+	Logo()
+	cmds := []Command{
 		cmdAdd,
 		cmdDel,
 		cmdListUsers,
 		cmdFindUsers,
-		cmdListRoles,
+		// cmdListRoles, //--> let's keep this a secret!
 		cmdHelp,
 	}
-)
-
-func help() {
-	Logo()
-
-	t := table.NewWriter()
-	t.SetOutputMirror(os.Stdout)
-	t.AppendHeader(table.Row{"Command", "Description"})
+	thelp := &table.Table{}
+	thelp.SetStyle(table.StyleColoredDark)
+	thelp.SetOutputMirror(os.Stdout)
+	thelp.AppendHeader(table.Row{"Command", "Description", "Required Args"})
 	for _, c := range cmds {
-		alt := c.flag
-		if c.alt != nil && len(c.alt) > 0 {
-			alt = c.flag + " | " + strings.Join(c.alt, " | ")
+		thelp.AppendRows([]table.Row{{c.Moniker, c.Help, ""}})
+		if len(c.Args) > 0 {
+			for _, a := range c.Args {
+				thelp.AppendRows([]table.Row{{"", "", a}})
+			}
 		}
-		t.AppendRows([]table.Row{
-			{alt, c.help},
-		})
 	}
-	t.Render()
+	thelp.Render()
 	os.Exit(0)
 }
 
 func Execute() (err error) {
 	cmd := os.Args[1]
-	var r interface{}
+	var data []byte
 	switch cmd {
-	case cmdAdd.flag:
-		if len(os.Args[2:]) != 2 {
-			return fmt.Errorf("command '%s' requires two arguments: %s", cmdAdd.flag, strings.Join(cmdAdd.args, ","))
+	case cmdAdd.Moniker:
+		if len(os.Args[2:]) != 3 {
+			return fmt.Errorf("command '%s' requires 3 args: %s", cmdAdd.Moniker, strings.Join(cmdAdd.Args, "\n"))
 		}
-		r, err = addUsrCmd(os.Args[2], os.Args[3])
-	case cmdDel.flag:
+		data, err = addUsrCmd(os.Args[2], os.Args[3], os.Args[4])
+	case cmdDel.Moniker:
 		if len(os.Args[2:]) != 1 {
 			return fmt.Errorf("command '%s' requires one argument: %s", cmd, name)
 		}
-		r, err = delUsrCmd(os.Args[2])
-	case cmdListUsers.flag:
-		r, err = allUsersCmd()
-	case cmdFindUsers.flag:
+		data, err = delUsrCmd(os.Args[2])
+	case cmdListUsers.Moniker:
+		data, err = allUsersCmd()
+	case cmdFindUsers.Moniker:
 		if len(os.Args[2:]) != 1 {
 			return fmt.Errorf("command '%s' requires one argument: %s", cmd, name)
 		}
-		r, err = allUsersCmd()
-	case cmdListRoles.flag:
-		r, err = allRolesCmd()
-	case cmdHelp.flag:
-		help()
+		data, err = findUsrCmd(os.Args[2])
+	case cmdListRoles.Moniker:
+		data, err = allRolesCmd()
+	case cmdHelp.Moniker:
+		Help()
 	default:
 		err = fmt.Errorf("command '%s' is not valid", cmd)
 	}
@@ -85,42 +86,71 @@ func Execute() (err error) {
 		return
 	}
 
-	yaml.Marshal(r)
+	fmt.Println(string(data))
 
 	return
 }
 
-func addUsrCmd(arg1, arg2 string) (data interface{}, err error) {
-	args, err := newCommandArg(cmdAdd.args, arg1, arg2)
-	return userAdmin.NewUser(args[email], args[name])
+func addUsrCmd(arg1, arg2, arg3 string) (user []byte, err error) {
+	args, err := NewCommandArg(cmdAdd.Args, arg1, arg2, arg3)
+	if err != nil {
+		return
+	}
+	data, err := userAdmin.NewUser(args[email], args[name], args[role])
+	if err != nil {
+		return
+	}
+	return yaml.Marshal(data)
 }
 
-func delUsrCmd(arg1 string) (data interface{}, err error) {
-	args, err := newCommandArg(cmdDel.args, arg1)
-	return userAdmin.DisableUser(args[email])
+func delUsrCmd(arg1 string) (user []byte, err error) {
+	args, err := NewCommandArg(cmdDel.Args, arg1)
+	if err != nil {
+		return
+	}
+	data, err := userAdmin.DisableUser(args[email])
+	if err != nil {
+		return
+	}
+	return yaml.Marshal(data)
 }
 
-func findUsrCmd(arg1 string) (data interface{}, err error) {
-	args, err := newCommandArg(cmdFindUsers.args, arg1)
-	return userAdmin.FindUserByEmail(args[email])
+func findUsrCmd(arg1 string) (user []byte, err error) {
+	args, err := NewCommandArg(cmdFindUsers.Args, arg1)
+	if err != nil {
+		return
+	}
+	data, err := userAdmin.FindUserByEmail(args[email])
+	if err != nil {
+		return
+	}
+	return yaml.Marshal(data)
 }
 
-func allUsersCmd() (data interface{}, err error) {
-	return userAdmin.ListAllUsers()
+func allUsersCmd() (users []byte, err error) {
+	println("fetching all users...")
+	data, err := userAdmin.ListAllUsers()
+	if err != nil {
+		return
+	}
+	return yaml.Marshal(data)
 }
 
-func allRolesCmd() (data interface{}, err error) {
-	return roleAdmin.Roles()
+func allRolesCmd() (roles []byte, err error) {
+	data, err := roleAdmin.Roles()
+	if err != nil {
+		return
+	}
+	return yaml.Marshal(data)
 }
 
-type command struct {
-	flag string
-	alt  []string
-	help string
-	args []string
+type Command struct {
+	Moniker string
+	Help    string
+	Args    []string
 }
 
-func newCommandArg(expected []string, args ...string) (ca map[string]string, err error) {
+func NewCommandArg(expected []string, args ...string) (ca map[string]string, err error) {
 	ca = make(map[string]string)
 	for _, arg := range args {
 		avp := strings.Split(arg, "=")

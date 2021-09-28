@@ -1,31 +1,53 @@
 package userAdmin
 
 import (
+	"context"
+	"fmt"
+	"log"
+
 	"github.com/DataDog/datadog-api-client-go/api/v2/datadog"
-	"github.com/twistingmercury/godog/commands/utils"
+	"github.com/twistingmercury/godog/commands/roleAdmin"
 )
 
-func NewUser(name, email string) (user *DatadogUser, err error) {
-	ctx := utils.NewContext()
-	attribs := *datadog.NewUserCreateAttributes(email)
-	attribs.SetName(name)
-	data := *datadog.NewUserCreateData(attribs, datadog.UsersType("users"))
-	body := *datadog.NewUserCreateRequest(data)
+func NewUser(email, name, role string) (user datadog.User, err error) {
+	defer func() {
+		if rcr := recover(); rcr != nil {
+			log.Fatalln(rcr)
+		}
+	}()
 
-	cfg := datadog.NewConfiguration()
-	client := datadog.NewAPIClient(cfg)
-
-	r, _, err := client.UsersApi.CreateUser(ctx, body)
+	userRole, err := roleAdmin.GetRole(role)
 	if err != nil {
 		return
 	}
 
-	user = &DatadogUser{
-		Name:   *r.Data.Attributes.Name,
-		Email:  *r.Data.Attributes.Email,
-		ID:     *r.Data.Id,
-		Status: *r.Data.Attributes.Status,
+	fmt.Printf("new user info: email: %s; name: %s; role: %s\n", email, name, userRole.Name())
+
+	ctx := datadog.NewDefaultContext(context.Background())
+	rId := userRole.Id()
+	attribs := *datadog.NewUserCreateAttributes(email)
+	attribs.SetName(name)
+
+	rd := *datadog.NewRelationshipToRoleDataWithDefaults()
+	rd.Id = &rId
+	rtr := *datadog.NewRelationshipToRoles()
+	rtr.SetData([]datadog.RelationshipToRoleData{rd})
+	rel := *datadog.NewUserRelationships()
+	rel.SetRoles(rtr)
+
+	createUserData := *datadog.NewUserCreateData(attribs, datadog.UsersType("users"))
+	createUserData.SetRelationships(rel)
+	body := *datadog.NewUserCreateRequest(createUserData)
+
+	cfg := datadog.NewConfiguration()
+	client := datadog.NewAPIClient(cfg)
+
+	r, raw, err := client.UsersApi.CreateUser(ctx, body)
+	if err != nil {
+		err = fmt.Errorf("respose: %v", raw)
+		return
 	}
 
+	user = *r.Data
 	return
 }

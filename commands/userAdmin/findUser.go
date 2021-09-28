@@ -1,12 +1,14 @@
 package userAdmin
 
 import (
+	"context"
+
 	"github.com/DataDog/datadog-api-client-go/api/v2/datadog"
-	"github.com/twistingmercury/godog/commands/utils"
 )
 
-func FindUserByEmail(email string) (user *DatadogUser, err error) {
-	ctx := utils.NewContext()
+func FindUserByEmail(email string) (user datadog.User, err error) {
+	ctx := datadog.NewDefaultContext(context.Background())
+
 	opt := datadog.ListUsersOptionalParameters{Filter: &email}
 
 	configuration := datadog.NewConfiguration()
@@ -17,16 +19,7 @@ func FindUserByEmail(email string) (user *DatadogUser, err error) {
 		return
 	}
 
-	data := r.GetData()
-
-	if len(data) > 0 {
-		user = &DatadogUser{
-			Name:   *data[0].Attributes.Name,
-			Email:  *data[0].Attributes.Email,
-			ID:     *data[0].Id,
-			Status: *data[0].Attributes.Status,
-		}
-	}
+	user = r.GetData()[0]
 
 	return
 }

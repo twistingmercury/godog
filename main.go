@@ -1,9 +1,10 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"log"
 	"os"
+	"path"
 	"strings"
 
 	"github.com/joho/godotenv"
@@ -17,11 +18,17 @@ var buildConfig = "debug"
 
 func main() {
 	if strings.ToLower(buildConfig) == "debug" {
-		if err := godotenv.Load("./godog.env"); err != nil {
-			log.Fatal("error loading .env file")
+		dir, _ := os.Getwd()
+		env := path.Join(dir, "_bin/godog.env")
+		if err := godotenv.Load(env); err != nil {
+			println(err.Error())
+			os.Exit(1)
 		}
 	}
-
+	if err := validateCfg(); err != nil {
+		println(err.Error())
+		os.Exit(2)
+	}
 	version()
 
 	if err := commands.Execute(); err != nil {
@@ -36,4 +43,38 @@ func version() {
 		fmt.Printf("\n- Version %s\n- Build Date: %s\n- Commit: %s\n- Build Configuration: %s\n", buildVersion, buildDate, buildCommit, buildConfig)
 		os.Exit(0)
 	}
+}
+
+func validateCfg() (err error) {
+	const (
+		api  = "missing value for DD_API_KEY"
+		app  = "missing value for DD_APP_KEY"
+		site = "missing value for DD_SITE"
+	)
+
+	sb := strings.Builder{}
+
+	msg := func(s string) {
+		if sb.Len() == 0 {
+			sb.WriteString(s)
+		} else {
+			sb.WriteString("; " + s)
+		}
+	}
+
+	if len(os.Getenv("DD_API_KEY")) == 0 {
+		msg(api)
+	}
+	if len(os.Getenv("DD_APP_KEY")) == 0 {
+		msg(app)
+	}
+	if len(os.Getenv("DD_SITE")) == 0 {
+		msg(site)
+	}
+
+	if sb.Len() > 0 {
+		err = errors.New(sb.String())
+	}
+
+	return
 }

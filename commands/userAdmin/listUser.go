@@ -1,12 +1,13 @@
 package userAdmin
 
 import (
+	"context"
+
 	"github.com/DataDog/datadog-api-client-go/api/v2/datadog"
-	"github.com/twistingmercury/godog/commands/utils"
 )
 
-func ListAllUsers() (users []DatadogUser, err error) {
-	ctx := utils.NewContext()
+func ListAllUsers() (user []datadog.User, err error) {
+	ctx := datadog.NewDefaultContext(context.Background())
 	status := "Active,Pending"
 	pageSize := int64(500)
 	filter := "users"
@@ -20,14 +21,7 @@ func ListAllUsers() (users []DatadogUser, err error) {
 		return
 	}
 
-	data := r.GetData()
+	user = r.GetData()
 
-	for _, u := range data {
-		users = append(users, DatadogUser{
-			Name:   *u.Attributes.Name,
-			Email:  *u.Attributes.Email,
-			ID:     *u.Id,
-			Status: *u.Attributes.Status})
-	}
 	return
 }
