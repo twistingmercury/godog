@@ -1,0 +1,430 @@
+- attributes:
+    createdat: 2018-11-05T21:18:45.298921Z
+    modifiedat: 2018-11-05T21:18:45.298921Z
+    name: Datadog Admin Role
+    usercount: 9
+    unparsedobject: {}
+  id: 60cf6c52-e140-11e8-bd15-f7250a8586e6
+  relationships:
+    permissions:
+      data:
+      - id: 984a2bd4-d3b4-11e8-a1ff-a7f660d43029
+        type: permissions
+        unparsedobject: {}
+      - id: 62cc036c-dd12-11e8-9e54-db9995643092
+        type: permissions
+        unparsedobject: {}
+      - id: 6f66600e-dd12-11e8-9e55-7f30fbb45e73
+        type: permissions
+        unparsedobject: {}
+      - id: 811ac4ca-dd12-11e8-9e57-676a7f0beef9
+        type: permissions
+        unparsedobject: {}
+      - id: 87b00304-dd12-11e8-9e59-cbeb5f71f72f
+        type: permissions
+        unparsedobject: {}
+      - id: 1a92ede2-6cb2-11e9-99c6-2b3a4a0cdf0a
+        type: permissions
+        unparsedobject: {}
+      - id: 979df720-aed7-11e9-99c6-a7eb8373165a
+        type: permissions
+        unparsedobject: {}
+      - id: d90f6830-d3d8-11e9-a77a-b3404e5e9ee2
+        type: permissions
+        unparsedobject: {}
+      - id: d90f6831-d3d8-11e9-a77a-4fd230ddbc6a
+        type: permissions
+        unparsedobject: {}
+      - id: d90f6832-d3d8-11e9-a77a-bf8a2607f864
+        type: permissions
+        unparsedobject: {}
+      - id: 4441648c-d8b1-11e9-a77a-1b899a04b304
+        type: permissions
+        unparsedobject: {}
+      - id: 48ef71ea-d8b1-11e9-a77a-93f408470ad0
+        type: permissions
+        unparsedobject: {}
+      - id: 4d87d5f8-d8b1-11e9-a77a-eb9c8350d04f
+        type: permissions
+        unparsedobject: {}
+      - id: 1af86ce4-7823-11ea-93dc-d7cad1b1c6cb
+        type: permissions
+        unparsedobject: {}
+      - id: b382b982-8535-11ea-93de-2bf1bdf20798
+        type: permissions
+        unparsedobject: {}
+      - id: 7314eb20-aa58-11ea-95e2-6fb6e4a451d5
+        type: permissions
+        unparsedobject: {}
+      - id: 7b516476-aa58-11ea-95e2-93718cd56369
+        type: permissions
+        unparsedobject: {}
+      - id: 80de1ec0-aa58-11ea-95e2-aff381626d5d
+        type: permissions
+        unparsedobject: {}
+      - id: 58b412cc-ff6d-11eb-bc9c-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 9ac1d8cc-e707-11ea-aa2d-73d37e989a9d
+        type: permissions
+        unparsedobject: {}
+      - id: 9de604d8-e707-11ea-aa2d-93f1a783b3a3
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301da-ec5c-11ea-aa9f-73bedeab67ee
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301db-ec5c-11ea-aa9f-2fe72193d60e
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301dc-ec5c-11ea-aa9f-13b33f8f46ea
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301dd-ec5c-11ea-aa9f-97edfb345bc9
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301de-ec5c-11ea-aa9f-a73252c24806
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301df-ec5c-11ea-aa9f-970a9ae645e5
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301e0-ec5c-11ea-aa9f-6ba6cc675d8c
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301e1-ec5c-11ea-aa9f-afa39f6f3e36
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301e2-ec5c-11ea-aa9f-1f511b7305fd
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301e4-ec5c-11ea-aa9f-87282b3a50cc
+        type: permissions
+        unparsedobject: {}
+      - id: 07c3c146-f7f8-11ea-acf6-0bd62b9ae60e
+        type: permissions
+        unparsedobject: {}
+      - id: 372896c4-f923-11ea-adbc-4fecd107156d
+        type: permissions
+        unparsedobject: {}
+      - id: 3e4d4d28-f923-11ea-adbc-e3565938c12e
+        type: permissions
+        unparsedobject: {}
+      - id: 4628ca54-f923-11ea-adbc-4b2b7f88c5e9
+        type: permissions
+        unparsedobject: {}
+      - id: 4ada6e36-f923-11ea-adbc-0788e5c5e3cf
+        type: permissions
+        unparsedobject: {}
+      - id: 5025ee24-f923-11ea-adbc-576ea241df8d
+        type: permissions
+        unparsedobject: {}
+      - id: 55f4b5ec-f923-11ea-adbc-1bfa2334a755
+        type: permissions
+        unparsedobject: {}
+      - id: 5c6b88e2-f923-11ea-adbc-abf57d079420
+        type: permissions
+        unparsedobject: {}
+      - id: 642eebe6-f923-11ea-adbc-eb617674ea04
+        type: permissions
+        unparsedobject: {}
+      - id: 6ba32d22-0e1a-11eb-ba44-bf9a5aafaa39
+        type: permissions
+        unparsedobject: {}
+      - id: fcac2ad8-2843-11eb-8315-0fe47949d625
+        type: permissions
+        unparsedobject: {}
+      - id: 417ba636-2dce-11eb-84c0-6bce5b0d9de0
+        type: permissions
+        unparsedobject: {}
+      - id: 43fa188e-2dce-11eb-84c0-835ad1fd6287
+        type: permissions
+        unparsedobject: {}
+      - id: 465cfe66-2dce-11eb-84c0-6baa888239fa
+        type: permissions
+        unparsedobject: {}
+      - id: 4916eebe-2dce-11eb-84c0-271cb2c672e8
+        type: permissions
+        unparsedobject: {}
+      - id: 4e3f02b4-2dce-11eb-84c0-2fca946a6efc
+        type: permissions
+        unparsedobject: {}
+      - id: 53950c54-2dce-11eb-84c0-a79ae108f6f8
+        type: permissions
+        unparsedobject: {}
+      - id: 5cbe5f9c-2dce-11eb-84c0-872d3e9f1076
+        type: permissions
+        unparsedobject: {}
+      - id: 61765026-2dce-11eb-84c0-833e230d1b8f
+        type: permissions
+        unparsedobject: {}
+      - id: 8106300a-54f7-11eb-8cbc-7781a434a67b
+        type: permissions
+        unparsedobject: {}
+      - id: bf0dcf7c-90af-11eb-9b82-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: bf0dcf7d-90af-11eb-9b82-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 98b984f4-b16d-11eb-a2c6-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 98b984f5-b16d-11eb-a2c6-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 12efc20e-d36c-11eb-a9b8-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 12efc211-d36c-11eb-a9b8-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 12efc20f-d36c-11eb-a9b8-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 12efc210-d36c-11eb-a9b8-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 97971c1c-e895-11eb-b13c-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 97971c1d-e895-11eb-b13c-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 7605ef24-f376-11eb-b90b-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 7605ef25-f376-11eb-b90b-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 26c79920-1703-11ec-85d2-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      unparsedobject: {}
+    unparsedobject: {}
+  type: roles
+  unparsedobject: {}
+- attributes:
+    createdat: 2018-11-06T01:35:50.601436Z
+    modifiedat: 2018-11-06T01:35:50.601436Z
+    name: Datadog Read Only Role
+    usercount: 23
+    unparsedobject: {}
+  id: 4b015cf4-e164-11e8-af08-af11849ec75b
+  relationships:
+    permissions:
+      data:
+      - id: 5e605652-dd12-11e8-9e53-375565b8970e
+        type: permissions
+        unparsedobject: {}
+      - id: 6f66600e-dd12-11e8-9e55-7f30fbb45e73
+        type: permissions
+        unparsedobject: {}
+      - id: d90f6830-d3d8-11e9-a77a-b3404e5e9ee2
+        type: permissions
+        unparsedobject: {}
+      - id: 4441648c-d8b1-11e9-a77a-1b899a04b304
+        type: permissions
+        unparsedobject: {}
+      - id: 1af86ce4-7823-11ea-93dc-d7cad1b1c6cb
+        type: permissions
+        unparsedobject: {}
+      - id: b382b982-8535-11ea-93de-2bf1bdf20798
+        type: permissions
+        unparsedobject: {}
+      - id: 7314eb20-aa58-11ea-95e2-6fb6e4a451d5
+        type: permissions
+        unparsedobject: {}
+      - id: 80de1ec0-aa58-11ea-95e2-aff381626d5d
+        type: permissions
+        unparsedobject: {}
+      - id: 5025ee24-f923-11ea-adbc-576ea241df8d
+        type: permissions
+        unparsedobject: {}
+      - id: 417ba636-2dce-11eb-84c0-6bce5b0d9de0
+        type: permissions
+        unparsedobject: {}
+      - id: 43fa188e-2dce-11eb-84c0-835ad1fd6287
+        type: permissions
+        unparsedobject: {}
+      - id: 4916eebe-2dce-11eb-84c0-271cb2c672e8
+        type: permissions
+        unparsedobject: {}
+      - id: 98b984f4-b16d-11eb-a2c6-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 12efc20e-d36c-11eb-a9b8-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 97971c1c-e895-11eb-b13c-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 7605ef24-f376-11eb-b90b-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 7605ef25-f376-11eb-b90b-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      unparsedobject: {}
+    unparsedobject: {}
+  type: roles
+  unparsedobject: {}
+- attributes:
+    createdat: 2018-11-06T00:53:47.534828Z
+    modifiedat: 2018-11-06T00:53:47.534828Z
+    name: Datadog Standard Role
+    usercount: 89
+    unparsedobject: {}
+  id: 6b24b5d6-e15e-11e8-b9ec-bb5761ac6cc5
+  relationships:
+    permissions:
+      data:
+      - id: 984d2f00-d3b4-11e8-a200-bb47109e9987
+        type: permissions
+        unparsedobject: {}
+      - id: 62cc036c-dd12-11e8-9e54-db9995643092
+        type: permissions
+        unparsedobject: {}
+      - id: 6f66600e-dd12-11e8-9e55-7f30fbb45e73
+        type: permissions
+        unparsedobject: {}
+      - id: 811ac4ca-dd12-11e8-9e57-676a7f0beef9
+        type: permissions
+        unparsedobject: {}
+      - id: 979df720-aed7-11e9-99c6-a7eb8373165a
+        type: permissions
+        unparsedobject: {}
+      - id: d90f6830-d3d8-11e9-a77a-b3404e5e9ee2
+        type: permissions
+        unparsedobject: {}
+      - id: d90f6831-d3d8-11e9-a77a-4fd230ddbc6a
+        type: permissions
+        unparsedobject: {}
+      - id: d90f6832-d3d8-11e9-a77a-bf8a2607f864
+        type: permissions
+        unparsedobject: {}
+      - id: 4441648c-d8b1-11e9-a77a-1b899a04b304
+        type: permissions
+        unparsedobject: {}
+      - id: 48ef71ea-d8b1-11e9-a77a-93f408470ad0
+        type: permissions
+        unparsedobject: {}
+      - id: 4d87d5f8-d8b1-11e9-a77a-eb9c8350d04f
+        type: permissions
+        unparsedobject: {}
+      - id: 1af86ce4-7823-11ea-93dc-d7cad1b1c6cb
+        type: permissions
+        unparsedobject: {}
+      - id: b382b982-8535-11ea-93de-2bf1bdf20798
+        type: permissions
+        unparsedobject: {}
+      - id: 7314eb20-aa58-11ea-95e2-6fb6e4a451d5
+        type: permissions
+        unparsedobject: {}
+      - id: 7b516476-aa58-11ea-95e2-93718cd56369
+        type: permissions
+        unparsedobject: {}
+      - id: 80de1ec0-aa58-11ea-95e2-aff381626d5d
+        type: permissions
+        unparsedobject: {}
+      - id: 58b412cc-ff6d-11eb-bc9c-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 9ac1d8cc-e707-11ea-aa2d-73d37e989a9d
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301da-ec5c-11ea-aa9f-73bedeab67ee
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301db-ec5c-11ea-aa9f-2fe72193d60e
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301dd-ec5c-11ea-aa9f-97edfb345bc9
+        type: permissions
+        unparsedobject: {}
+      - id: 46a301e4-ec5c-11ea-aa9f-87282b3a50cc
+        type: permissions
+        unparsedobject: {}
+      - id: 07c3c146-f7f8-11ea-acf6-0bd62b9ae60e
+        type: permissions
+        unparsedobject: {}
+      - id: 372896c4-f923-11ea-adbc-4fecd107156d
+        type: permissions
+        unparsedobject: {}
+      - id: 4628ca54-f923-11ea-adbc-4b2b7f88c5e9
+        type: permissions
+        unparsedobject: {}
+      - id: 4ada6e36-f923-11ea-adbc-0788e5c5e3cf
+        type: permissions
+        unparsedobject: {}
+      - id: 5025ee24-f923-11ea-adbc-576ea241df8d
+        type: permissions
+        unparsedobject: {}
+      - id: 55f4b5ec-f923-11ea-adbc-1bfa2334a755
+        type: permissions
+        unparsedobject: {}
+      - id: 5c6b88e2-f923-11ea-adbc-abf57d079420
+        type: permissions
+        unparsedobject: {}
+      - id: 642eebe6-f923-11ea-adbc-eb617674ea04
+        type: permissions
+        unparsedobject: {}
+      - id: 6ba32d22-0e1a-11eb-ba44-bf9a5aafaa39
+        type: permissions
+        unparsedobject: {}
+      - id: fcac2ad8-2843-11eb-8315-0fe47949d625
+        type: permissions
+        unparsedobject: {}
+      - id: 417ba636-2dce-11eb-84c0-6bce5b0d9de0
+        type: permissions
+        unparsedobject: {}
+      - id: 43fa188e-2dce-11eb-84c0-835ad1fd6287
+        type: permissions
+        unparsedobject: {}
+      - id: 4916eebe-2dce-11eb-84c0-271cb2c672e8
+        type: permissions
+        unparsedobject: {}
+      - id: 5cbe5f9c-2dce-11eb-84c0-872d3e9f1076
+        type: permissions
+        unparsedobject: {}
+      - id: 61765026-2dce-11eb-84c0-833e230d1b8f
+        type: permissions
+        unparsedobject: {}
+      - id: 8106300a-54f7-11eb-8cbc-7781a434a67b
+        type: permissions
+        unparsedobject: {}
+      - id: 98b984f4-b16d-11eb-a2c6-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 12efc20e-d36c-11eb-a9b8-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 12efc211-d36c-11eb-a9b8-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 12efc20f-d36c-11eb-a9b8-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 12efc210-d36c-11eb-a9b8-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 97971c1c-e895-11eb-b13c-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 97971c1d-e895-11eb-b13c-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 7605ef24-f376-11eb-b90b-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 7605ef25-f376-11eb-b90b-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      - id: 26c79920-1703-11ec-85d2-da7ad0900002
+        type: permissions
+        unparsedobject: {}
+      unparsedobject: {}
+    unparsedobject: {}
+  type: roles
+  unparsedobject: {}
+
