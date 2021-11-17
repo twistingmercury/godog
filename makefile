@@ -8,7 +8,7 @@ BUILD_CFG=debug
 build:
 	rm -rf $(BIN_DIR)/
 	mkdir $(BIN_DIR)
-	env GOOS=linux go build \
+	env GOOS=darwin go build \
 	-ldflags "-X 'main.buildDate=$(BUILD_DATE)' -X 'main.buildVersion=$(BUILD_VER)' -X 'main.buildCommit=$(GIT_COMMIT)' -X 'main.buildConfig=$(BUILD_CFG)'" \
 	-o $(BIN_DIR) ./...
 	cp _local/*.env $(BIN_DIR)/godog.env
