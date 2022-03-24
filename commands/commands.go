@@ -68,6 +68,10 @@ func Help() {
 }
 
 func Execute() (err error) {
+	if len(os.Args) <= 1 {
+		Help()
+		return
+	}
 	cmd := os.Args[1]
 	var data []byte
 	switch cmd {
