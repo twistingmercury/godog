@@ -2,12 +2,9 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"os"
-	"path"
 	"strings"
 
-	"github.com/joho/godotenv"
 	"github.com/twistingmercury/godog/commands"
 )
 
@@ -17,31 +14,15 @@ var buildCommit = "{not set}"
 var buildConfig = "debug"
 
 func main() {
-	if strings.ToLower(buildConfig) == "debug" {
-		dir, _ := os.Getwd()
-		env := path.Join(dir, "_bin/godog.env")
-		if err := godotenv.Load(env); err != nil {
-			println(err.Error())
-			os.Exit(1)
-		}
-	}
 	if err := validateCfg(); err != nil {
 		println(err.Error())
 		os.Exit(2)
 	}
-	version()
 
+	commands.SetBuildInfo(buildDate, buildVersion, buildCommit)
 	if err := commands.Execute(); err != nil {
 		println(err.Error())
 		os.Exit(1)
-	}
-}
-
-func version() {
-	if os.Args[1] == "--version" {
-		commands.Logo()
-		fmt.Printf("\n- Version %s\n- Build Date: %s\n- Commit: %s\n- Build Configuration: %s\n", buildVersion, buildDate, buildCommit, buildConfig)
-		os.Exit(0)
 	}
 }
 

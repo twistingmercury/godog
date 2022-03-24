@@ -1,0 +1,10 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/jjohnson01/dev/go/godog'
+rm -rf _bin/
+mkdir _bin
+env GOOS=darwin go build \
+	-ldflags "-X 'main.buildDate=2022.03.24' -X 'main.buildVersion=0.0.1' -X 'main.buildCommit=f9fd6c5' -X 'main.buildConfig=debug'" \
+	-o _bin ./...
+# cp _local/*.env _bin/godog.env
+make: Leaving directory `/Users/jjohnson01/dev/go/godog'
+ 

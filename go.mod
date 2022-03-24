@@ -5,7 +5,6 @@ go 1.17
 require (
 	github.com/DataDog/datadog-api-client-go v1.4.0
 	github.com/jedib0t/go-pretty v4.3.0+incompatible
-	github.com/joho/godotenv v1.4.0
 	gopkg.in/yaml.v2 v2.4.0
 )
 

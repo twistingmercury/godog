@@ -11,7 +11,7 @@ build:
 	env GOOS=darwin go build \
 	-ldflags "-X 'main.buildDate=$(BUILD_DATE)' -X 'main.buildVersion=$(BUILD_VER)' -X 'main.buildCommit=$(GIT_COMMIT)' -X 'main.buildConfig=$(BUILD_CFG)'" \
 	-o $(BIN_DIR) ./...
-	cp _local/*.env $(BIN_DIR)/godog.env
+	# cp _local/*.env $(BIN_DIR)/godog.env
 
 test:
 	go test -v ./... -coverprofile=coverage.out

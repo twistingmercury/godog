@@ -25,7 +25,20 @@ var (
 	cmdFindUsers = Command{"--find-user", "Find a specific user by email or name.", nil}
 	cmdListRoles = Command{"--list-roles", "Lists all of the available roles supported by Datadog.", nil}
 	cmdHelp      = Command{"--help", "Shows command line help.", nil}
+	cmdVersion   = Command{"version", "Shows the current version information.", nil}
 )
+
+var (
+	buildDate    = "{not set}"
+	buildVersion = "{not set}"
+	buildCommit  = "{not set}"
+)
+
+func SetBuildInfo(date, ver, commit string) {
+	buildDate = date
+	buildVersion = ver
+	buildCommit = commit
+}
 
 func Help() {
 	Logo()
@@ -36,6 +49,7 @@ func Help() {
 		cmdFindUsers,
 		// cmdListRoles, //--> let's keep this a secret!
 		cmdHelp,
+		cmdVersion,
 	}
 	thelp := &table.Table{}
 	thelp.SetStyle(table.StyleColoredDark)
@@ -78,6 +92,8 @@ func Execute() (err error) {
 		data, err = allRolesCmd()
 	case cmdHelp.Moniker:
 		Help()
+	case cmdVersion.Moniker:
+		versionCmd()
 	default:
 		err = fmt.Errorf("command '%s' is not valid", cmd)
 	}
@@ -142,6 +158,12 @@ func allRolesCmd() (roles []byte, err error) {
 		return
 	}
 	return yaml.Marshal(data)
+}
+
+func versionCmd() {
+	Logo()
+	fmt.Printf("\n- Version %s\n- Build Date: %s\n- Commit: %s\n", buildVersion, buildDate, buildCommit)
+	os.Exit(0)
 }
 
 type Command struct {
