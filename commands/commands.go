@@ -77,19 +77,19 @@ func Execute() (err error) {
 	switch cmd {
 	case cmdAdd.Moniker:
 		if len(os.Args[2:]) != 3 {
-			return fmt.Errorf("command '%s' requires 3 args: %s", cmdAdd.Moniker, strings.Join(cmdAdd.Args, "\n"))
+			return fmt.Errorf("command '%s' requires 3 args:\n    %s", cmdAdd.Moniker, strings.Join(cmdAdd.Args, "\n    "))
 		}
 		data, err = addUsrCmd(os.Args[2], os.Args[3], os.Args[4])
 	case cmdDel.Moniker:
 		if len(os.Args[2:]) != 1 {
-			return fmt.Errorf("command '%s' requires one argument: %s", cmd, name)
+			return fmt.Errorf("command '%s' requires one argument:\n    %s", cmd, name)
 		}
 		data, err = delUsrCmd(os.Args[2])
 	case cmdListUsers.Moniker:
 		data, err = allUsersCmd()
 	case cmdFindUsers.Moniker:
 		if len(os.Args[2:]) != 1 {
-			return fmt.Errorf("command '%s' requires one argument: %s", cmd, name)
+			return fmt.Errorf("command '%s' requires one argument:\n    %s", cmd, name)
 		}
 		data, err = findUsrCmd(os.Args[2])
 	case cmdListRoles.Moniker:

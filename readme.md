@@ -22,3 +22,9 @@
     | --lr            | Lists all of the available roles supported by Datadog.      |
     | --help | ? | -h | Shows command line help.                                    |
     +-----------------+-------------------------------------------------------------+
+
+To add a new user:
+
+```bash
+$ godog --add-user --email="new.user@mcg.com" --name="New User" --role=s
+```

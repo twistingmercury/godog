@@ -14,5 +14,8 @@ test:
 	go test -v ./... -coverprofile=coverage.out
 	go tool cover -html=coverage.out
 
+install:
+	go install .
+
 run:
 	./$(BIN_DIR)/godog
